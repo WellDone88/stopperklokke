@@ -9,17 +9,38 @@
     <style>
 
         #watch {
-            display: flex;
-            position: fixed;
             background-image:url(Stopperklokke.webp);
             border: solid black 1px;
             width: 220px;
             height: 200px;
-            align-items: center;
             font-family: 'Courier New', Courier, monospace;
             font-size: 35px;
             
             
+        }
+
+        #rundetider {
+            height: 200px;
+            width: 220px;
+            margin-top: 2px;
+
+
+        }
+
+        #klokke {
+            position: absolute;
+            top: 105px;
+            left: 100px;
+            text-align: right;
+            background-color: grey;
+            height: 50px;
+            width: 90px;
+
+        }
+
+        #rundetider {
+            font-size: medium;
+            font-family: 'Courier New', Courier, monospace;
         }
 
 
@@ -38,14 +59,20 @@ Lag så en knapp for å ta "rundetider" - altså at du lagrer og viser tiden i d
 samtidig som tidtakeren stiller seg tilbake på 0 og begynner på nytt.
 
 Lag en knapp for å blanke ut og stoppe klokka og timeren. -->
-
+<div>
 <button onclick="Start()">Start</button>
 <button onclick="Pause()">Pause</button>
 <button onclick="ClearMyTimer()">Clear</button>
+</div>
 
-<div id="watch"></div><br><br><br><br><br><br><br><br><br><br><br><br>
+<div id="watch"><span id="klokke"></span></div>
 
-<div id="rundetider"></div>
+
+    <div id="rundetider"></div>
+
+
+
+
 
 <script>
     let StartVerdi = 0;
@@ -54,7 +81,7 @@ Lag en knapp for å blanke ut og stoppe klokka og timeren. -->
     
     function klokka(Start){
         StartVerdi++
-        document.getElementById('watch').innerHTML = StartVerdi
+        document.getElementById('klokke').innerHTML = StartVerdi
 
     }
     function Start(ClearMyTimer){
@@ -67,7 +94,7 @@ Lag en knapp for å blanke ut og stoppe klokka og timeren. -->
         document.getElementById('rundetider').innerHTML += ' Roundtime: ' + StartVerdi;
         timer = setInterval(klokka,1000)
         StartVerdi = 0;
-        document.getElementById('watch').innerHTML = StartVerdi;
+        document.getElementById('klokke').innerHTML = StartVerdi;
 
     
     }
@@ -75,7 +102,7 @@ Lag en knapp for å blanke ut og stoppe klokka og timeren. -->
     function ClearMyTimer() {
         StartVerdi = 0;
         Clear = clearInterval(timer)
-        document.getElementById('watch').innerHTML = StartVerdi;
+        document.getElementById('klokke').innerHTML = StartVerdi;
         document.getElementById('rundetider').innerHTML = '';
 
     }
