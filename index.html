@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+
+        #watch {
+            display: flex;
+            position: fixed;
+            background-image:url(Stopperklokke.webp);
+            border: solid black 1px;
+            width: 220px;
+            height: 200px;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 35px;
+            
+            
+        }
+
+
+
+
+    </style>
+
+</head>
+<body>
+    <!-- Oppgave - Stoppeklokke
+Lag en stoppeklokke.
+
+Begynn med å lage én knapp som setter i gang tiden - tiden lagres i en variabel, og vises fram i nettleseren.
+
+Lag så en knapp for å ta "rundetider" - altså at du lagrer og viser tiden i dét du trykker på pauseknappen, 
+samtidig som tidtakeren stiller seg tilbake på 0 og begynner på nytt.
+
+Lag en knapp for å blanke ut og stoppe klokka og timeren. -->
+
+<button onclick="Start()">Start</button>
+<button onclick="Pause()">Pause</button>
+<button onclick="ClearMyTimer()">Clear</button>
+
+<div id="watch"></div><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<div id="rundetider"></div>
+
+<script>
+    let StartVerdi = 0;
+    let timer = 0;
+    let Clear = 0;
+    
+    function klokka(Start){
+        StartVerdi++
+        document.getElementById('watch').innerHTML = StartVerdi
+
+    }
+    function Start(ClearMyTimer){
+        timer = setInterval(klokka,1000);
+        
+    }
+
+    function Pause(){
+        clearInterval(timer)
+        document.getElementById('rundetider').innerHTML += ' Roundtime: ' + StartVerdi;
+        timer = setInterval(klokka,1000)
+        StartVerdi = 0;
+        document.getElementById('watch').innerHTML = StartVerdi;
+
+    
+    }
+
+    function ClearMyTimer() {
+        StartVerdi = 0;
+        Clear = clearInterval(timer)
+        document.getElementById('watch').innerHTML = StartVerdi;
+        document.getElementById('rundetider').innerHTML = '';
+
+    }
+
+    
+</script>
+
+</body>
+</html>
